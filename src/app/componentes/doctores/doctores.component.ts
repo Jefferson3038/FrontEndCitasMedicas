@@ -74,6 +74,8 @@ export class DoctoresComponent implements OnInit {
     this.doctor.DocEmail=select.docEmail;
     this.doctor.DocEspecialidades=select.docEspecialidades;
     this.doctor.UserCodigo=select.userCodigo;
+    this.doctor.DocHorarioInicial=select.docHorarioInicial;
+    this.doctor.DocHorarioFinal=select.docHorarioFinal;
     this.openDialog();
   }
 
@@ -85,5 +87,7 @@ export class DoctoresComponent implements OnInit {
     this.doctor.DocEmail="";
     this.doctor.DocEspecialidades="";
     this.doctor.UserCodigo="";
+    this.doctor.DocHorarioInicial="";
+    this.doctor.DocHorarioFinal="";
   }
 }
