@@ -24,6 +24,7 @@
               <th>Telefono</th>
               <th>Email</th>
               <th>Especialidad</th>
+              <th>Horario</th>
               <th style="width: 0px;"></th>
               <th style="width: 0px;"></th>
             </tr>
@@ -35,7 +36,8 @@
               <td>{{doc.docApellido}}</td>
               <td>{{doc.docTelefono}}</td>
               <td>{{doc.docEmail}}</td>
-              <td>{{doc.docEspecialidades}}</td>
+              <td>{{doc.docEspecialidades}}
+              <td>{{doc.docHorarioInicial}} - {{doc.docHorarioFinal}}</td>   
               <td><button class="btn btn-warning" type="button" (click)="onSetData(doc)">Detalles</button></td>
               <td><button class="btn btn-danger" type="button"  (click)="onDeleteDoctor(doc)">Eliminar</button></td>
             </tr>

@@ -7,4 +7,6 @@ export class Doctor {
     UserCodigo:string="";
     DocEspecialidades:string="";
     DocEstatus:string="A";
+    DocHorarioFinal:string="";
+    DocHorarioInicial:string="";
 }
