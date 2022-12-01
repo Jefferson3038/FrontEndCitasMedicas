@@ -1,0 +1,19 @@
+<h3>Detalles del usuario {{usuario.UserNombre}}</h3>
+<div>
+  <img class="col-md-5 float-md-end mb-2 ms-md-2" style="width: 50%; padding-right: 100px; padding-top: 50px;" src="../../../assets/doctor-png.png">
+  <h5 class="col-md-6 float-md-end mb-2 ms-md-2" style="text-align: center;width: 50%; padding-right: 100px;padding-top: 0px;" *ngIf="usuario.RlCodigo==1;else Paciente">Doctor</h5>
+</div>
+<div class="col-md-4">
+    <label for="txtNombre" class="from-label">Usuario</label>
+    <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="usuario.UserNombre">
+  </div>
+  <div class="col-md-4">
+    <label for="txtApellido" class="from-label">Rol</label>
+    <span *ngIf="usuario.RlCodigo==1;then Doctor else Paciente"> </span>
+  </div>
+
+  <button class="btn btn-success" type="button"  (click)="onUpdate(usuario)">Actualizar</button>
+  <button style="color:white;" class="btn btn-warning" type="button" (click)="onDelete(usuario)">Eliminar</button>
+  <button class="btn btn-danger" type="button" (click)="cerrarDialog()">Cancelar</button>
+<ng-template #Paciente><input type="text" name="id" id="txtApellido" class="form-control" disabled="false" value="Paciente"></ng-template>
+<ng-template #Doctor><input type="text" name="id" id="txtApellido" class="form-control" disabled="false" value="Doctor"></ng-template>

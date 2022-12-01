@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2>Usuarios</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtDocot" class="table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Rol</th>
+              <th style="width: 0px;"></th>
+              <th style="width: 0px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of datatable">
+              <td>{{user.userCodigo}}</td>
+              <td>{{user.userNombre}}</td>
+              <td *ngIf="user.rlCodigo==1; else Paciente">Doctor</td>
+              <td><button class="btn btn-warning" type="button" (click)="onSetData(user)">Detalles</button></td>
+              <td><button class="btn btn-danger" type="button"  (click)="onDelete(user)">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #Paciente>Paciente</ng-template>

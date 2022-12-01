@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2>Pacientes</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtDocot" class="table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Date of Birth</th>
+              <th>Telefono</th>
+              <th>Email</th>
+              <th>Direccion</th>
+              <th style="width: 0px;"></th>
+              <th style="width: 0px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let patient of datatable">
+              <td>{{patient.pacCodigo}}</td>
+              <td>{{patient.pacNombre}}</td>
+              <td>{{patient.pacApellido}}</td>
+              <td>{{patient.pacFechaNacimiento}}</td>
+              <td>{{patient.pacTelefono}}</td>
+              <td>{{patient.pacEmail}}</td>
+              <td>{{patient.pacDireccion}}</td>
+              <td><button class="btn btn-warning" type="button" (click)="onSetData(patient)">Detalles</button></td>
+              <td><button class="btn btn-danger" type="button"  (click)="onDelete(patient)">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,86 @@
+body{
+    background-color: #2B316B;
+}
+
+h1{
+position: absolute;
+width: 60rem;
+height: 2rem;
+left: 36rem;
+top: 7rem;
+font-weight: 700;
+font-size: 50px;
+line-height: 4rem;
+color: #FFFFFF;
+}
+
+h2{
+position: absolute;
+width: 723px;
+height: 73px;
+left: 32rem;
+top: 11.5rem;
+font-weight: 700;
+font-size: 38px;
+line-height: 56px;
+text-align: center;
+color: #FFFFFF;
+}
+
+p{
+position: absolute;
+width: 835px;
+height: 173px;
+left: 30rem;
+top: 300px;
+font-weight: 400;
+font-size: 26px;
+line-height: 35px;
+text-align: center;
+color: #FFFFFF;
+}
+
+p > span{
+    font-weight: bold;
+}
+
+.doctoresimg{
+position: absolute;
+width: 40em;
+height: 25rem;
+left: 35rem;
+top: 25.55rem;
+}
+
+.bloque-1{
+position: absolute;
+width: 200px;
+height: 200px;
+left: 46px;
+top: 134px;
+background: #FFFFFF;
+box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 68px;
+}
+
+.bloque-2{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 46px;
+    top: 365px;
+    background: #FFFFFF;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 68px;
+}
+
+.bloque-3{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 51px;
+    top: 600px;
+    background: #FFFFFF;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 68px;
+}

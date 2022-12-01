@@ -1,0 +1,16 @@
+button{
+    font-weight: bold;
+    color: white;
+}
+
+th {
+    font-weight: bold;
+}
+
+#dtDocot{
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.10);
+}
+
+table{
+    border-radius: 1%;
+}

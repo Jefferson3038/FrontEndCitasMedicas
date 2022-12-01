@@ -1,0 +1,29 @@
+<h3>Detalles de {{doctor.DocNombre}} {{doctor.DocApellido}}</h3>
+<div>
+  <img class="col-md-5 float-md-end mb-2 ms-md-2" style="width: 50%; padding-right: 100px; padding-top: 50px;" src="../../../assets/doctor-png.png">
+  <h5 class="col-md-6 float-md-end mb-2 ms-md-2" style="text-align: center;width: 50%; padding-right: 100px;padding-top: 0px;">{{doctor.DocEspecialidades}}</h5>
+</div>
+<div class="col-md-4">
+    <label for="txtNombre" class="from-label">Nombre</label>
+    <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="doctor.DocNombre">
+  </div>
+  <div class="col-md-4">
+    <label for="txtApellido" class="from-label">Apellido</label>
+    <input type="text" name="id" id="txtApellido" class="form-control" [(ngModel)]="doctor.DocApellido">
+  </div>
+  <div class="col-md-4">
+    <label for="txtEspecialidad" class="from-label">Especialidad</label>
+    <input type="text" name="id" id="txtEspecialidad" class="form-control" [(ngModel)]="doctor.DocEspecialidades">
+  </div>
+  <span class="row"></span>
+  <div class="col-md-4">
+    <label for="txtTelefono" class="from-label">Telefono</label>
+    <input type="text" name="id" id="txtTelefono" class="form-control" [(ngModel)]="doctor.DocTelefono">
+  </div>
+  <div class="col-md-4">
+    <label for="txtEmail" class="from-label">Email</label>
+    <input type="text" name="id" id="txtEmail" class="form-control" [(ngModel)]="doctor.DocEmail">
+  </div>
+  <button class="btn btn-success" type="button"  (click)="onUpdateDoctor(doctor)">Actualizar</button>
+  <button style="color:white;" class="btn btn-warning" type="button" (click)="onDeleteDoctor(doctor)">Eliminar</button>
+  <button class="btn btn-danger" type="button" (click)="cerrarDialog()">Cancelar</button>

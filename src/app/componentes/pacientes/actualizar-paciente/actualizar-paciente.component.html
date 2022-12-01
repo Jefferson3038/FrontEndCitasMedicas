@@ -1,0 +1,33 @@
+<h3>Detalles de {{paciente.PacNombre}} {{paciente.PacApellido}}</h3>
+<div>
+  <img class="col-md-5 float-md-end mb-2 ms-md-2" style="width: 50%; padding-right: 100px; padding-top: 50px;" src="../../../assets/pacientes.png">
+  <h5 class="col-md-6 float-md-end mb-2 ms-md-2" style="text-align: center;width: 50%; padding-right: 100px;padding-top: 0px;">{{paciente.PacNombre}} {{paciente.PacApellido}}</h5>
+</div>
+<div class="col-md-4">
+    <label for="txtNombre" class="from-label">Nombre</label>
+    <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="paciente.PacNombre">
+  </div>
+  <div class="col-md-4">
+    <label for="txtApellido" class="from-label">Apellido</label>
+    <input type="text" name="id" id="txtApellido" class="form-control" [(ngModel)]="paciente.PacApellido">
+  </div>
+  <div class="col-md-4">
+    <label for="txtDireccion" class="from-label">Direccion</label>
+    <input type="text" name="id" id="txtDireccion" class="form-control" [(ngModel)]="paciente.PacDireccion">
+  </div>
+  <span class="row"></span>
+  <div class="col-md-4">
+    <label for="txtTelefono" class="from-label">Telefono</label>
+    <input type="text" name="id" id="txtTelefono" class="form-control" [(ngModel)]="paciente.PacTelefono">
+  </div>
+  <div class="col-md-4">
+    <label for="txtEmail" class="from-label">Email</label>
+    <input type="text" name="id" id="txtEmail" class="form-control" [(ngModel)]="paciente.PacEmail">
+  </div>
+  <div class="col-md-4">
+    <label for="txtFechaNacimiento" class="from-label">Fecha de nacimiento</label>
+    <input type="date" name="id" id="txtFechaNacimiento" class="form-control" [(ngModel)]="paciente.PacFechaNacimiento">
+  </div>
+  <button class="btn btn-success" type="button"  (click)="onUpdate(paciente)">Actualizar</button>
+  <button style="color:white;" class="btn btn-warning" type="button" (click)="onDelete(paciente)">Eliminar</button>
+  <button class="btn btn-danger" type="button" (click)="cerrarDialog()">Cancelar</button>

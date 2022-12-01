@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2>Doctores</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-success" type="button"><a Style="text-decoration: none; color: white;" href="/Agregar-doctor">Agregar</a></button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtDocot" class="table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Telefono</th>
+              <th>Email</th>
+              <th>Especialidad</th>
+              <th style="width: 0px;"></th>
+              <th style="width: 0px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let doc of datatable">
+              <td>{{doc.docCodigo}}</td>
+              <td>{{doc.docNombre}}</td>
+              <td>{{doc.docApellido}}</td>
+              <td>{{doc.docTelefono}}</td>
+              <td>{{doc.docEmail}}</td>
+              <td>{{doc.docEspecialidades}}</td>
+              <td><button class="btn btn-warning" type="button" (click)="onSetData(doc)">Detalles</button></td>
+              <td><button class="btn btn-danger" type="button"  (click)="onDeleteDoctor(doc)">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
