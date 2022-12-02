@@ -27,11 +27,14 @@ export class DialogCreateDocComponent implements OnInit {
     this.doctor.DocEmail="";
     this.doctor.DocEspecialidades="";
     this.doctor.UserCodigo="";
+    this.doctor.DocHorarioInicial="";
+    this.doctor.DocHorarioFinal="";
     this.usuario.UserNombre="";
     this.usuario.UserPassword="";
   }
   
   onAddDoctor(doctor:Doctor):void{
+    this.usuario.RlCodigo=1;
     this.usuarioService.addUsuarios(this.usuario).subscribe(res=>{
       var da = JSON.stringify(res);
       var data = JSON.parse(da).userCodigo;
@@ -53,5 +56,5 @@ export class DialogCreateDocComponent implements OnInit {
   volverDoctorLista(){
     this.router.navigate(["/Doctores"]);
   }
-
+  
 }

@@ -38,6 +38,15 @@
       </div>
       <span class="row"></span>
       <div class="col-md-3">
+        <label for="txtEntrada" class="from-label">Entrada</label>
+        <input type="time" name="id" id="txtEntrada" class="form-control" [(ngModel)]="doctor.DocHorarioInicial">
+      </div>
+      <div class="col-md-3">
+        <label for="txtFinal" class="from-label">Salida</label>
+        <input type="time" name="id" id="txtFinal" class="form-control" [(ngModel)]="doctor.DocHorarioFinal">
+      </div>
+      <span class="row"></span>
+      <div class="col-md-3">
         <label for="txtUsuario" class="from-label">Usuario</label>
         <input type="text" name="id" id="txtUsuario" class="form-control" [(ngModel)]="usuario.UserNombre">
       </div>

@@ -15,8 +15,7 @@
     <label for="txtEspecialidad" class="from-label">Especialidad</label>
     <input type="text" name="id" id="txtEspecialidad" class="form-control" [(ngModel)]="doctor.DocEspecialidades">
   </div>
-  <span class="row"></span>
-  <div class="col-md-4">
+    <div class="col-md-4">
     <label for="txtTelefono" class="from-label">Telefono</label>
     <input type="text" name="id" id="txtTelefono" class="form-control" [(ngModel)]="doctor.DocTelefono">
   </div>
@@ -24,6 +23,14 @@
     <label for="txtEmail" class="from-label">Email</label>
     <input type="text" name="id" id="txtEmail" class="form-control" [(ngModel)]="doctor.DocEmail">
   </div>
+  <div class="col-md-3">
+    <label for="txtEntrada" class="from-label">Entrada</label>
+    <input type="time" name="id" id="txtEntrada" class="form-control" [(ngModel)]="doctor.DocHorarioInicial">
+  </div>
+  <div class="col-md-3">
+    <label for="txtFinal" class="from-label">Salida</label>
+    <input type="time" name="id" id="txtFinal" class="form-control" [(ngModel)]="doctor.DocHorarioFinal">
+  </div>   
   <button class="btn btn-success" type="button"  (click)="onUpdateDoctor(doctor)">Actualizar</button>
   <button style="color:white;" class="btn btn-warning" type="button" (click)="onDeleteDoctor(doctor)">Eliminar</button>
   <button class="btn btn-danger" type="button" (click)="cerrarDialog()">Cancelar</button>

@@ -12,7 +12,7 @@ import { ActualizaruserDialogComponent } from './actualizaruser-dialog/actualiza
 })
 export class UsuariosComponent implements OnInit {
   usuario:Usuarios = new Usuarios();
-  datatable:any = []; 
+  datatable:any = [];
 
   constructor(private userService:UsuarioService, private dialog?:MatDialog) { }
 
@@ -53,6 +53,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   onSetData(select:any){
+    this.usuario.UserFechaCreacion=select.userFechaCreacion;
     this.usuario.UserCodigo=select.userCodigo;
     this.usuario.UserNombre=select.userNombre;
     this.usuario.UserPassword=select.userPassword;

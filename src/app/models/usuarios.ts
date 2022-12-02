@@ -2,6 +2,7 @@ export class Usuarios{
     UserCodigo:number;
     UserNombre:string;
     UserPassword:string;
-    RlCodigo:number=1;
+    RlCodigo:number;
     UserEstatus:string="A";
+    UserFechaCreacion:string="default";
 }
