@@ -25,10 +25,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of datatable">
+            <tr *ngFor="let user of datatable" [ngSwitch]="user.rlCodigo">
               <td>{{user.userCodigo}}</td>
               <td>{{user.userNombre}}</td>
-              <td *ngIf="user.rlCodigo==1; else Paciente">Doctor</td>
+              <td *ngSwitchCase="1">Doctor</td>
+              <td *ngSwitchCase="2">Paciente</td>
               <td><button class="btn btn-warning" type="button" (click)="onSetData(user)">Detalles</button></td>
               <td><button class="btn btn-danger" type="button"  (click)="onDelete(user)">Eliminar</button></td>
             </tr>

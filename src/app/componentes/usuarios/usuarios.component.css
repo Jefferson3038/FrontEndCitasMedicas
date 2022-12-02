@@ -14,3 +14,10 @@ th {
 table{
     border-radius: 1%;
 }
+
+.pacienteR{
+    display: inline-flexbox;
+    padding: 0%;
+    margin: 0%;
+
+}
