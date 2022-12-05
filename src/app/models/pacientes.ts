@@ -6,7 +6,6 @@ export class Pacientes{
     PacTelefono:string="";
     PacEmail:string="";
     PacDireccion:string="";
-    PacEstatus:string="";
-    PacPassword:string="";
+    PacEstatus:string="A";
     UserCodigo:number=0;
 }

@@ -19,6 +19,7 @@ import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { PacientesComponent } from './componentes/pacientes/pacientes.component';
 import { ActualizaruserDialogComponent } from './componentes/usuarios/actualizaruser-dialog/actualizaruser-dialog.component';
 import { ActualizarPacienteComponent } from './componentes/pacientes/actualizar-paciente/actualizar-paciente.component';
+import { RegistroPacientesComponent } from './componentes/registro-pacientes/registro-pacientes/registro-pacientes.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ActualizarPacienteComponent } from './componentes/pacientes/actualizar-
     UsuariosComponent,
     PacientesComponent,
     ActualizaruserDialogComponent,
-    ActualizarPacienteComponent
+    ActualizarPacienteComponent,
+    RegistroPacientesComponent
 
   ],
   imports: [

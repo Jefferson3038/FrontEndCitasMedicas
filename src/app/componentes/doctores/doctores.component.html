@@ -5,12 +5,18 @@
     </div>
     <div class="row text-center mt-5">
       <div class="col">
-        <h2>Doctores</h2>
+        <h2>{{titulo}}</h2>
       </div>
     </div>
-    <div class="row mt-5">
+    <div *ngIf="titulo=='Doctores'" class="row mt-5">
+      <div  class="col">
+        <button class="btn btn-success" type="button" (click)="vistaAgregar()">Agregar</button>
+        <button class="btn btn-primary" type="button" (click)="onDataTableEliminados()">Ver Eliminados</button>
+      </div>
+    </div>
+    <div *ngIf="titulo=='Doctores eliminados'" class="row mt-5">
       <div class="col">
-        <button class="btn btn-success" type="button"><a Style="text-decoration: none; color: white;" href="/Agregar-doctor">Agregar</a></button>
+        <button class="btn btn-primary" type="button" (click)="onDataTable()">Volver</button>
       </div>
     </div>
     <div class="row mt-5">
@@ -30,16 +36,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let doc of datatable">
-              <td>{{doc.docCodigo}}</td>
+            <tr *ngFor="let doc of datatable" [ngSwitch]="doc.docEstatus">
+              <td [ngStyle]="{color: doc.docEstatus=='D' ? 'red': 'black'}">{{doc.docCodigo}}</td>
               <td>{{doc.docNombre}}</td>
               <td>{{doc.docApellido}}</td>
               <td>{{doc.docTelefono}}</td>
               <td>{{doc.docEmail}}</td>
               <td>{{doc.docEspecialidades}}
               <td>{{doc.docHorarioInicial}} - {{doc.docHorarioFinal}}</td>   
-              <td><button class="btn btn-warning" type="button" (click)="onSetData(doc)">Detalles</button></td>
-              <td><button class="btn btn-danger" type="button"  (click)="onDeleteDoctor(doc)">Eliminar</button></td>
+              <td *ngSwitchCase="'A'"><button class="btn btn-warning" type="button" (click)="onSetData(doc)">Detalles</button></td>
+              <td *ngSwitchCase="'A'"><button class="btn btn-danger" type="button"  (click)="onDeleteDoctor(doc)">Eliminar</button></td>
+              <td *ngSwitchCase="'D'"><button class="btn btn-success" type="button"  (click)="onRestaurar(doc)">Restaurar</button></td>
             </tr>
           </tbody>
         </table>

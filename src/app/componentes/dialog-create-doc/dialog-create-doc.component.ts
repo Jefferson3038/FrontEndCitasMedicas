@@ -38,7 +38,7 @@ export class DialogCreateDocComponent implements OnInit {
     this.usuarioService.addUsuarios(this.usuario).subscribe(res=>{
       var da = JSON.stringify(res);
       var data = JSON.parse(da).userCodigo;
-      this.doctor.DocCodigo=Number(data);
+      this.doctor.DocCodigo=data;
       this.doctor.UserCodigo=data;
       this.doctorService.addDoctor(doctor).subscribe(res=>{
         if(res){

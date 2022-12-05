@@ -13,7 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class PacientesComponent implements OnInit {
   paciente:Pacientes = new Pacientes();
-  datatable:any = []; 
+  datatable:any = [];
+  titulo:string;
   
   constructor(private pacienteService:PacientesService, private userService:UsuarioService,private dialog?:MatDialog){
   }
@@ -38,11 +39,33 @@ export class PacientesComponent implements OnInit {
     }
   }
 
+  onRestaurar(select:any):void{
+    select.pacEstatus="A";
+    this.pacienteService.updatePaciente(select.pacCodigo, select).subscribe(res => {
+      if(res){
+        Swal.fire("Restaurado",'Se ha restaurado el paciente '+select.pacNombre+' '+select.pacApellido+' de manera exitosa','success')
+        this.clear();
+        this.onDataTableEliminados();
+      } else {
+        alert('Error!')
+      }
+    })
+  }
+
   onDataTable(){
-    this.pacienteService.getPaciente().subscribe(res=>{
+    this.pacienteService.getPaciente("A").subscribe(res=>{
       this.datatable=res;
       console.log(res);
     });
+    this.titulo="Pacientes";
+  }
+
+  onDataTableEliminados(){
+    this.pacienteService.getPaciente("D").subscribe(res=>{
+      this.datatable=res;
+      console.log(res);
+    });
+    this.titulo="Pacientes eliminados";
   }
 
   onDelete(select:any):void{

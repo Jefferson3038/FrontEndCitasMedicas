@@ -5,11 +5,17 @@
     </div>
     <div class="row text-center mt-5">
       <div class="col">
-        <h2>Usuarios</h2>
+        <h2>{{titulo}}</h2>
       </div>
     </div>
-    <div class="row mt-5">
+    <div *ngIf="titulo=='Usuarios'" class="row mt-5">
       <div class="col">
+        <button class="btn btn-primary" type="button" (click)="onDataTableEliminados()">Ver Eliminados</button>
+      </div>
+    </div>
+    <div *ngIf="titulo=='Usuarios eliminados'" class="row mt-5">
+      <div class="col">
+        <button class="btn btn-primary" type="button" (click)="onDataTable()">Volver</button>
       </div>
     </div>
     <div class="row mt-5">
@@ -19,7 +25,7 @@
             <tr>
               <th>Id</th>
               <th>Nombre</th>
-              <th>Rol</th>
+              <th style="width: 18rem;">Rol</th>
               <th style="width: 0px;"></th>
               <th style="width: 0px;"></th>
             </tr>

@@ -13,3 +13,25 @@ label{
     padding-top: 0.4rem;
 }
 
+.perfil{
+    float: right;
+    margin-right: 3rem;
+    margin-top: 1rem;
+    width: 200px;
+}
+
+.tipo{
+    position: relative;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    left: 25.8rem;
+    top: 1.8rem;
+    margin: 0%;
+    width: 20rem;
+}
+
+input{
+    width:17.5rem;
+}
