@@ -5,11 +5,17 @@
     </div>
     <div class="row text-center mt-5">
       <div class="col">
-        <h2>Pacientes</h2>
+        <h2>{{titulo}}</h2>
       </div>
     </div>
-    <div class="row mt-5">
+    <div *ngIf="titulo=='Pacientes'" class="row mt-5">
       <div class="col">
+        <button class="btn btn-primary" type="button" (click)="onDataTableEliminados()">Ver Eliminados</button>
+      </div>
+    </div>
+    <div *ngIf="titulo=='Pacientes eliminados'" class="row mt-5">
+      <div class="col">
+        <button class="btn btn-primary" type="button" (click)="onDataTable()">Volver</button>
       </div>
     </div>
     <div class="row mt-5">
@@ -29,16 +35,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let patient of datatable">
-              <td>{{patient.pacCodigo}}</td>
+            <tr *ngFor="let patient of datatable" [ngSwitch]="patient.pacEstatus">
+              <td [ngStyle]="{color: patient.pacEstatus=='D' ? 'red':'black'}">{{patient.pacCodigo}}</td>
               <td>{{patient.pacNombre}}</td>
               <td>{{patient.pacApellido}}</td>
               <td>{{patient.pacFechaNacimiento}}</td>
               <td>{{patient.pacTelefono}}</td>
               <td>{{patient.pacEmail}}</td>
               <td>{{patient.pacDireccion}}</td>
-              <td><button class="btn btn-warning" type="button" (click)="onSetData(patient)">Detalles</button></td>
-              <td><button class="btn btn-danger" type="button"  (click)="onDelete(patient)">Eliminar</button></td>
+              <td *ngSwitchCase="'A'"><button class="btn btn-warning" type="button" (click)="onSetData(patient)">Detalles</button></td>
+              <td *ngSwitchCase="'A'"><button class="btn btn-danger" type="button"  (click)="onDelete(patient)">Eliminar</button></td>
+              <td *ngSwitchCase="'D'"><button class="btn btn-success" type="button"  (click)="onRestaurar(patient)">Restaurar</button></td>
             </tr>
           </tbody>
         </table>

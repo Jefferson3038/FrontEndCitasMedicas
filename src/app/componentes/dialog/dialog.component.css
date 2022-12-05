@@ -7,9 +7,28 @@ h3{
 button{
     margin-top: 1rem;
     margin-right: 0.5rem;
+    font-weight: bold;
 }
 
 label{
     padding-top: 0.4rem;
 }
 
+.perfil{
+    width: 250px;
+    float: right;
+    margin-right: 4.2rem;
+    margin-top: 2rem;
+}
+
+.tipo{
+    position: relative;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    left: 4.2rem;
+    bottom: 12.5rem;
+    margin: 0%;
+    width: 20rem;
+}

@@ -13,6 +13,7 @@ import { ActualizaruserDialogComponent } from './actualizaruser-dialog/actualiza
 export class UsuariosComponent implements OnInit {
   usuario:Usuarios = new Usuarios();
   datatable:any = [];
+  titulo:string="";
 
   constructor(private userService:UsuarioService, private dialog?:MatDialog) { }
 
@@ -21,16 +22,26 @@ export class UsuariosComponent implements OnInit {
   }
 
   onDataTable(){
-    this.userService.getUsuarios().subscribe(res=>{
+    this.userService.getUsuarios("A").subscribe(res=>{
       this.datatable=res;
       console.log(res);
     });
+    this.titulo="Usuarios";
+  }
+
+  onDataTableEliminados(){
+    this.userService.getUsuarios("D").subscribe(res=>{
+      this.datatable=res;
+      console.log(res);
+    });
+    this.titulo="Usuarios eliminados";
   }
 
   openDialog(): void {
     if(this.dialog){
       const dialogRef = this.dialog.open(ActualizaruserDialogComponent, {
       width: '50%',
+      height: '20.5rem',
       data: this.usuario
       });
       dialogRef.afterClosed().subscribe(
@@ -45,7 +56,7 @@ export class UsuariosComponent implements OnInit {
   onDelete(select:any):void{
     this.userService.deleteUsuarios(select.userCodigo).subscribe(res => {
       if(res){
-        Swal.fire("Eliminado",'Se ha eliminado el usuario '+this.usuario.UserNombre+' de manera exitosa','success')
+        Swal.fire("Eliminado",'Se ha eliminado el usuario '+select.userNombre+' de manera exitosa','success')
         this.clear();
         this.onDataTable();
       } 

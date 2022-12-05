@@ -11,9 +11,10 @@ export class DoctorService {
   constructor(private http:HttpClient) {}
   url:string="https://localhost:7265/api/doctores";
 
-  getDoctor(){
-    return this.http.get(this.url);
+  getDoctor(estatus:string){
+    return this.http.get(this.url+`?A=${estatus}`);
   }
+
   addDoctor(doctor:Doctor):Observable<Doctor>{
     return this.http.post<Doctor>(this.url,doctor);
   }

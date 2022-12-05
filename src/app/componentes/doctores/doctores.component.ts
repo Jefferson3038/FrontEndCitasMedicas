@@ -5,7 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import Swal from 'sweetalert2';
 import { UsuarioService } from 'src/app/Services/usuarios.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctores',
@@ -14,9 +14,10 @@ import { UsuarioService } from 'src/app/Services/usuarios.service';
 })
 export class DoctoresComponent implements OnInit {
   doctor:Doctor = new Doctor();
-  datatable:any = []; 
+  datatable:any = [];
+  titulo:string; 
   
-  constructor(private doctorService:DoctorService, private userService:UsuarioService,private dialog?:MatDialog){
+  constructor(private doctorService:DoctorService, private userService:UsuarioService,private router:Router,private dialog?:MatDialog){
   }
 
 
@@ -40,14 +41,21 @@ export class DoctoresComponent implements OnInit {
   }
 
   onDataTable(){
-    this.doctorService.getDoctor().subscribe(res=>{
+    this.doctorService.getDoctor("A").subscribe(res=>{
       this.datatable=res;
-      console.log(res);
     });
+    this.titulo="Doctores";
+  }
+
+  onDataTableEliminados(){
+    this.doctorService.getDoctor("D").subscribe(res=>{
+      this.datatable=res;
+    });
+    this.titulo="Doctores eliminados";
   }
 
   onDeleteDoctor(select:any):void{
-    this.userService.deleteUsuarios(select.docCodigo).subscribe(res=>{
+    this.userService.deleteUsuarios(select.userCodigo).subscribe(res=>{
       if (res){
         console.log(res)
       }
@@ -60,10 +68,24 @@ export class DoctoresComponent implements OnInit {
         Swal.fire("Eliminado",'Se ha eliminado el doctor '+this.doctor.DocNombre+' '+this.doctor.DocApellido+' de manera exitosa','success')
         this.clear();
         this.onDataTable();
+        this.userService.deleteUsuarios(select.userCodigo);
       } else {
         alert('Error!')
       }
     });
+  }
+
+  onRestaurar(select:any):void{
+    select.docEstatus="A";
+    this.doctorService.updateDoctor(select.docCodigo, select).subscribe(res => {
+      if(res){
+        Swal.fire("Restaurado",'Se ha restaurado el doctor '+select.docNombre+' '+select.docApellido+' de manera exitosa','success')
+        this.clear();
+        this.onDataTableEliminados();
+      } else {
+        alert('Error!')
+      }
+    })
   }
 
   onSetData(select:any){
@@ -89,5 +111,9 @@ export class DoctoresComponent implements OnInit {
     this.doctor.UserCodigo="";
     this.doctor.DocHorarioInicial="";
     this.doctor.DocHorarioFinal="";
+  }
+
+  vistaAgregar(){
+    this.router.navigate(["/Agregar-doctor"]);
   }
 }

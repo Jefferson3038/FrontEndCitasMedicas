@@ -12,8 +12,8 @@ export class UsuarioService {
   constructor(private http:HttpClient) {}
   url:string="https://localhost:7265/api/usuario";
 
-  getUsuarios(){
-    return this.http.get(this.url);
+  getUsuarios(estatus:string){
+    return this.http.get(this.url+`?A=${estatus}`);
   }
   addUsuarios(usuario:Usuarios):Observable<Usuarios>{
     return this.http.post<Usuarios>(this.url,usuario);
