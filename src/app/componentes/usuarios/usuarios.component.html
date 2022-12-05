@@ -30,18 +30,18 @@
               <th style="width: 0px;"></th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let user of datatable" [ngSwitch]="user.rlCodigo">
+          <tbody >
+            <tr *ngFor="let user of datatable" [ngSwitch]="user.userEstatus">
               <td>{{user.userCodigo}}</td>
               <td>{{user.userNombre}}</td>
-              <td *ngSwitchCase="1">Doctor</td>
-              <td *ngSwitchCase="2">Paciente</td>
-              <td><button class="btn btn-warning" type="button" (click)="onSetData(user)">Detalles</button></td>
-              <td><button class="btn btn-danger" type="button"  (click)="onDelete(user)">Eliminar</button></td>
+              <td *ngIf="user.rlCodigo==1">Doctor</td>
+              <td *ngIf="user.rlCodigo==2">Paciente</td>
+              <td *ngSwitchCase="'A'"><button class="btn btn-warning" type="button" (click)="onSetData(user)">Detalles</button></td>
+              <td *ngSwitchCase="'A'"><button class="btn btn-danger" type="button" (click)="onDelete(user)">Eliminar</button></td>
+              <td *ngSwitchCase="'D'"><button class="btn btn-success" type="button" (click)="onRestaurar(user)">Restaurar</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <ng-template #Paciente>Paciente</ng-template>

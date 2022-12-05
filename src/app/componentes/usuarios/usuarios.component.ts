@@ -53,6 +53,18 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
+  onRestaurar(select:any):void{
+    this.userService.updateUsuarios(select.userCodigo, select).subscribe(res => {
+      if(res){
+        this.onDataTableEliminados();
+        Swal.fire("Restaurado",'Se ha restaurado el doctor '+select.userNombre+' de manera exitosa','success')
+        this.clear();
+      } else {
+        alert('Error!')
+      }
+    })
+  }
+
   onDelete(select:any):void{
     this.userService.deleteUsuarios(select.userCodigo).subscribe(res => {
       if(res){

@@ -40,7 +40,6 @@ export class PacientesComponent implements OnInit {
   }
 
   onRestaurar(select:any):void{
-    select.pacEstatus="A";
     this.pacienteService.updatePaciente(select.pacCodigo, select).subscribe(res => {
       if(res){
         Swal.fire("Restaurado",'Se ha restaurado el paciente '+select.pacNombre+' '+select.pacApellido+' de manera exitosa','success')
