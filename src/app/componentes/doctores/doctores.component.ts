@@ -76,7 +76,6 @@ export class DoctoresComponent implements OnInit {
   }
 
   onRestaurar(select:any):void{
-    select.docEstatus="A";
     this.doctorService.updateDoctor(select.docCodigo, select).subscribe(res => {
       if(res){
         Swal.fire("Restaurado",'Se ha restaurado el doctor '+select.docNombre+' '+select.docApellido+' de manera exitosa','success')
