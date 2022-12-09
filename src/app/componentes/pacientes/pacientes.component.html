@@ -10,7 +10,8 @@
     </div>
     <div *ngIf="titulo=='Pacientes'" class="row mt-5">
       <div class="col">
-        <button class="btn btn-primary" type="button" (click)="onDataTableEliminados()">Ver Eliminados</button>
+        <button class="btn btn-success botones" type="button" (click)="vistaAgregar()">Agregar</button>
+        <button class="btn btn-primary botones" type="button" (click)="onDataTableEliminados()">Ver Eliminados</button>
       </div>
     </div>
     <div *ngIf="titulo=='Pacientes eliminados'" class="row mt-5">

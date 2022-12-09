@@ -5,6 +5,7 @@ import { PacientesService } from 'src/app/Services/pacientes.service';
 import { UsuarioService } from 'src/app/Services/usuarios.service';
 import { ActualizarPacienteComponent } from './actualizar-paciente/actualizar-paciente.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pacientes',
@@ -16,7 +17,7 @@ export class PacientesComponent implements OnInit {
   datatable:any = [];
   titulo:string;
   
-  constructor(private pacienteService:PacientesService, private userService:UsuarioService,private dialog?:MatDialog){
+  constructor(private router:Router,private pacienteService:PacientesService, private userService:UsuarioService,private dialog?:MatDialog){
   }
 
 
@@ -105,8 +106,11 @@ export class PacientesComponent implements OnInit {
     this.paciente.PacApellido="";
     this.paciente.PacTelefono="";
     this.paciente.PacEmail="";
-    this.paciente.PacFechaNacimiento="";
+    this.paciente.PacFechaNacimiento= new Date();
     this.paciente.UserCodigo=0;
     this.paciente.PacDireccion="";
+  }
+  vistaAgregar(){
+    this.router.navigate(["/Agregar-paciente"]);
   }
 }

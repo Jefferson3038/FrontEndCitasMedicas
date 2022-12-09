@@ -36,7 +36,7 @@ export class ActualizarPacienteComponent implements OnInit {
   this.paciente.PacApellido="";
   this.paciente.PacTelefono="";
   this.paciente.PacEmail="";
-  this.paciente.PacFechaNacimiento="";
+  this.paciente.PacFechaNacimiento= new Date();
   this.paciente.UserCodigo=0;
 }
 
