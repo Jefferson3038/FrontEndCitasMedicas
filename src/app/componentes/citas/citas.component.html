@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2>{{titulo}}</h2>
+      </div>
+    </div>
+    <div *ngIf="titulo=='Citas'" class="row mt-5">
+      <div  class="col">
+        <button class="btn btn-success" type="button" (click)="vistaAgregar()">Agregar</button>
+        <button class="btn btn-primary" type="button" (click)="onDataTableEliminados()">Ver Eliminados</button>
+      </div>
+    </div>
+    <div *ngIf="titulo=='Citas eliminadas'" class="row mt-5">
+      <div class="col">
+        <button class="btn btn-primary" type="button" (click)="onDataTable()">Volver</button>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <table id="dtDocot" class="table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Paciente</th>
+              <th>Doctor</th>
+              <th style="width: 25rem;">Horario</th>
+              <th>Descripcion</th>
+              <th style="width: 0px;"></th>
+              <th style="width: 0px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let date of datatable" [ngSwitch]="date.ctEstatus">
+              <td [ngStyle]="{color: date.ctEstatus=='D' ? 'red': 'black'}">{{date.ctCodigo}}</td>
+              <td>{{date.pacCodigo}}</td>
+              <td>{{date.nombreDoctor}}</td>
+              <td>{{convertirFecha(date.ctHorarioInicial)}} - {{convertirFecha(date.ctHorarioFinal)}}</td>  
+              <td>{{date.ctDescripcion}}</td> 
+              <td *ngSwitchCase="'A'"><button class="btn btn-warning" type="button" (click)="onSetData(date)">Detalles</button></td>
+              <td *ngSwitchCase="'A'"><button class="btn btn-danger" type="button"  (click)="onDeleteCita(date)">Eliminar</button></td>
+              <td *ngSwitchCase="'D'"><button class="btn btn-success" type="button"  (click)="onRestaurar(date)">Restaurar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

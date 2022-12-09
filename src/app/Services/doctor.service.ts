@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Doctor } from '../models/doctores';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
+import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,10 @@ export class DoctorService {
 
   getDoctor(estatus:string){
     return this.http.get(this.url+`?A=${estatus}`);
+  }
+
+  getDoctorId(id:number){
+    return this.http.get(this.url+`/${id}`);
   }
 
   addDoctor(doctor:Doctor):Observable<Doctor>{

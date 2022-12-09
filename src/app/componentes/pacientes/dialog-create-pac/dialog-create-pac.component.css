@@ -1,0 +1,16 @@
+button{
+    font-weight: bold;
+    color: white;
+    font-family: 'Product Sans';
+    position: relative;
+    left: 10rem;
+}
+
+.doctoresimg{
+    position: absolute;
+    width: 40rem;
+    height:25rem;
+    left: 50rem;
+    top: 23rem;
+    }
+    

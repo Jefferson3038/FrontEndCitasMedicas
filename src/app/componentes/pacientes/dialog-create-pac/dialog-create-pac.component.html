@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2>Crear Paciente</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <label for="txtId" hidden="true" class="from-label">ID</label>
+        <input type="text" hidden="true" name="id" id="txtId" class="form-control" [(ngModel)]="pacientes.PacCodigo" disabled="true">
+      </div>
+      <span class="row"></span>
+      <div class="col-md-3">
+        <label for="txtNombre" class="from-label">Nombre</label>
+        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="pacientes.PacNombre">
+      </div>
+      <div class="col-md-3">
+        <label for="txtApellido" class="from-label">Apellido</label>
+        <input type="text" name="id" id="txtApellido" class="form-control" [(ngModel)]="pacientes.PacApellido">
+      </div>
+      <span class="row"></span>
+      <div class="col-md-4">
+        <label for="txtDireccion" class="from-label">Dirección</label>
+        <input type="text" name="id" id="txtDireccion" class="form-control" [(ngModel)]="pacientes.PacDireccion">
+      </div>
+      <div class="col-md-2">
+        <label for="txtFechaNacimiento" class="from-label">Fecha de nacimiento</label>
+        <input type="date" name="id" id="txtFechaNacimiento" class="form-control" [(ngModel)]="pacientes.PacFechaNacimiento">
+      </div>
+      <span class="row"></span>
+      <div class="col-md-3">
+        <label for="txtTelefono" class="from-label">Telefono</label>
+        <input type="text" name="id" id="txtTelefono" class="form-control" [(ngModel)]="pacientes.PacTelefono">
+      </div>
+      <div class="col-md-3">
+        <label for="txtEmail" class="from-label">Email</label>
+        <input type="email" name="id" id="txtEmail" class="form-control" [(ngModel)]="pacientes.PacEmail">
+      </div>
+      <span class="row"></span>
+      <div class="col-md-3">
+        <label for="txtUsuario" class="from-label">Usuario</label>
+        <input type="text" name="id" id="txtUsuario" class="form-control" [(ngModel)]="usuario.UserNombre">
+      </div>
+      <div class="col-md-3">
+        <label for="txtPassword" class="from-label">Contraseña</label>
+        <input type="password" name="id" id="txtPassword" class="form-control" [(ngModel)]="usuario.UserPassword">
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <span class="row"></span>
+        <button class="btn btn-success" type="button" (click)="onAddPaciente(pacientes)">Agregar</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+        <button class="btn btn-danger" type="button" (click)="volverPacienteLista()">Cancelar</button>
+      </div>
+    </div>
+    <img class="doctoresimg" src="../../../assets/doctores-create.png">
+  </div>

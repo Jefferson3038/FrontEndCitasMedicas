@@ -1,6 +1,7 @@
 button{
     font-weight: bold;
     color: white;
+    margin-right: 0.5rem;
 }
 
 th {
@@ -13,8 +14,4 @@ th {
 
 table{
     border-radius: 3.5%;
-}
-
-button.botones{
-    margin-right: 0.5rem;
 }

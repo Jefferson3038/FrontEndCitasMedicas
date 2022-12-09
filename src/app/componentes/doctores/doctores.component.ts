@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Doctor } from 'src/app/models/doctores';
 import { DoctorService } from 'src/app/Services/doctor.service';
 import {MatDialog} from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogComponent } from './dialog/dialog.component';
 import Swal from 'sweetalert2';
 import { UsuarioService } from 'src/app/Services/usuarios.service';
 import { Router } from '@angular/router';

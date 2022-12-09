@@ -14,6 +14,11 @@ export class PacientesService {
   getPaciente(estatus:string){
     return this.http.get(this.url+`?A=${estatus}`);
   }
+
+  getPacienteId(id:number){
+    return this.http.get(this.url+`/${id}`);
+  }
+
   addPaciente(paciente:Pacientes):Observable<Pacientes>{
     return this.http.post<Pacientes>(this.url,paciente);
   }
