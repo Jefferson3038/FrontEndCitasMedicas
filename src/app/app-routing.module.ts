@@ -8,6 +8,9 @@ import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CitasComponent } from './componentes/citas/citas.component';
 import { DialogCreateCitaComponent } from './componentes/citas/dialog-create-cita/dialog-create-cita.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { PacientesDoctoresComponent } from './componentes/pantallas-pacientes/pacientes-doctores/pacientes-doctores.component';
+import { PacientesCitasComponent } from './componentes/pantallas-pacientes/pacientes-citas/pacientes-citas.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -17,7 +20,10 @@ const routes: Routes = [
   {path:'Pacientes',component:PacientesComponent},
   {path:'Agregar-paciente',component:DialogCreatePacComponent},
   {path:'Citas', component:CitasComponent},
-  {path:'Agregar-cita', component:DialogCreateCitaComponent}
+  {path:'Agregar-cita', component:DialogCreateCitaComponent},
+  {path:'Perfil', component:PerfilComponent},
+  {path:'Vista-Doctores',component:PacientesDoctoresComponent},
+  {path:'Cita-pacientes',component:PacientesCitasComponent}
 ];
 
 @NgModule({

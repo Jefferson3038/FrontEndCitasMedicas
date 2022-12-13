@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row text-center mt-4">
+    <div class="col">
+    </div>
+  </div>
+  <div class="row text-center mt-5">
+    <div class="col">
+      <h2>{{titulo}}</h2>
+    </div>
+  </div>
+  <div *ngIf="titulo=='Citas'" class="row mt-5">
+    <div  class="col">
+      <button class="btn btn-success" type="button" (click)="vistaAgregar()">Agregar</button>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <table id="dtDocot" class="table" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Doctor</th>
+            <th>Horario</th>
+            <th>Descripcion</th>
+            <th style="width: 0px;"></th>
+            <th style="width: 0px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let date of datatable">
+            <td>{{date.doctores.docNombre}} {{date.doctores.docApellido}}</td>
+            <td>{{date.ctHorarioInicial | date:'MMM d, h:mm a'}} - {{date.ctHorarioFinal | date:'MMM d, h:mm a'}}</td>  
+            <td>{{date.ctDescripcion}}</td> 
+            <td><button class="btn btn-warning" style="color: white;" type="button" (click)="onSetData(date)">Detalles</button></td>
+            <td><button class="btn btn-danger" type="button"  (click)="onDeleteCita(date)">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DoctoresComponent } from './componentes/doctores/doctores.component';
 import { NavComponent } from './componentes/nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './componentes/doctores/dialog/dialog.component';
 import { DialogCreateDocComponent } from './componentes/doctores/dialog-create-doc/dialog-create-doc.component';
 import { UsuarioService } from './Services/usuarios.service';
@@ -23,6 +23,11 @@ import { RegistroPacientesComponent } from './componentes/registro-pacientes/reg
 import { CitasComponent } from './componentes/citas/citas.component';
 import { ActualizarCitaComponent } from './componentes/citas/actualizar-cita/actualizar-cita.component';
 import { DialogCreateCitaComponent } from './componentes/citas/dialog-create-cita/dialog-create-cita.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { NavPacientesComponent } from './componentes/pantallas-pacientes/nav-pacientes/nav-pacientes.component';
+import { PacientesDoctoresComponent } from './componentes/pantallas-pacientes/pacientes-doctores/pacientes-doctores.component';
+import { PacientesCitasComponent } from './componentes/pantallas-pacientes/pacientes-citas/pacientes-citas.component';
+import { ActualizarCitasPcaComponent } from './componentes/pantallas-pacientes/pacientes-citas/actualizar-citas-pca/actualizar-citas-pca.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,13 @@ import { DialogCreateCitaComponent } from './componentes/citas/dialog-create-cit
     DialogCreatePacComponent,
     CitasComponent,
     ActualizarCitaComponent,
-    DialogCreateCitaComponent
+    DialogCreateCitaComponent,
+    PerfilComponent,
+    NavPacientesComponent,
+    PacientesDoctoresComponent,
+    PacientesCitasComponent,
+    ActualizarCitasPcaComponent
+    
   ],
   imports: [
     BrowserModule,

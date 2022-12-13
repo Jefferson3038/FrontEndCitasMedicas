@@ -6,6 +6,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import Swal from 'sweetalert2';
 import { UsuarioService } from 'src/app/Services/usuarios.service';
 import { Router } from '@angular/router';
+import { CitasService } from 'src/app/Services/citas.service';
 
 @Component({
   selector: 'app-doctores',
@@ -15,9 +16,11 @@ import { Router } from '@angular/router';
 export class DoctoresComponent implements OnInit {
   doctor:Doctor = new Doctor();
   datatable:any = [];
-  titulo:string; 
+  titulo:string;
+  validacionCitas:any=[];
   
-  constructor(private doctorService:DoctorService, private userService:UsuarioService,private router:Router,private dialog?:MatDialog){
+  constructor(private doctorService:DoctorService, private userService:UsuarioService,private router:Router,
+    private citasService:CitasService,private dialog?:MatDialog){
   }
 
 
@@ -44,6 +47,9 @@ export class DoctoresComponent implements OnInit {
     this.doctorService.getDoctor("A").subscribe(res=>{
       this.datatable=res;
     });
+    this.citasService.getCita("A").subscribe(res=>{
+      this.validacionCitas=res;
+    });
     this.titulo="Doctores";
   }
 
@@ -54,25 +60,46 @@ export class DoctoresComponent implements OnInit {
     this.titulo="Doctores eliminados";
   }
 
-  onDeleteDoctor(select:any):void{
-    this.userService.deleteUsuarios(select.userCodigo).subscribe(res=>{
-      if (res){
-        console.log(res)
+  onDeleteDoctor(select:any){
+    if (this.validacionEliminar(select.docCodigo)){
+      this.eliminar(select)
+    }
+    else if(this.validacionEliminar(select.docCodigo)==false){
+      Swal.fire("Error","No se puede borrar este doctor, porque esta asignado a una cita","error")
+    }
+  }
+
+  eliminar(select:any):void{
+    Swal.fire({
+      title: "¿Esta seguro?",
+      text: "Este elemento sera eliminado",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, mantener'
+    }).then((result)=>{
+      if(result.value){
+        this.userService.deleteUsuarios(select.userCodigo).subscribe(res=>{
+          if (res){
+            console.log(res)
+          }
+          else{
+            alert('Error!')
+          }
+        });
+        this.doctorService.deleteDoctor(select.docCodigo).subscribe(res => {
+          if(res){
+            Swal.fire("Eliminado",'Se ha eliminado el doctor '+this.doctor.DocNombre+' '+this.doctor.DocApellido+' de manera exitosa','success')
+            this.clear();
+            this.onDataTable();
+            this.userService.deleteUsuarios(select.userCodigo);
+          } else {
+            alert('Error!')
+          }
+        });
       }
-      else{
-        alert('Error!')
-      }
-    });
-    this.doctorService.deleteDoctor(select.docCodigo).subscribe(res => {
-      if(res){
-        Swal.fire("Eliminado",'Se ha eliminado el doctor '+this.doctor.DocNombre+' '+this.doctor.DocApellido+' de manera exitosa','success')
-        this.clear();
-        this.onDataTable();
-        this.userService.deleteUsuarios(select.userCodigo);
-      } else {
-        alert('Error!')
-      }
-    });
+      return false
+    })
   }
 
   onRestaurar(select:any):void{
@@ -114,5 +141,18 @@ export class DoctoresComponent implements OnInit {
 
   vistaAgregar(){
     this.router.navigate(["/Agregar-doctor"]);
+  }
+
+  validacionEliminar(id:number){
+    let validacion:boolean=true;
+    let valor:number=0;
+    for(let item of this.validacionCitas){
+       valor = item.docCodigo
+      if(valor==id){
+        validacion=false;
+        break;
+      }
+    }
+    return validacion
   }
 }
