@@ -8,60 +8,62 @@
         <h2>Crear Doctores</h2>
       </div>
     </div>
+  <form>
     <div class="row mt-5">
       <div class="col-md-3">
         <label for="txtId" hidden="true" class="from-label">ID</label>
-        <input type="text" hidden="true" name="id" id="txtId" class="form-control" [(ngModel)]="doctor.DocCodigo" disabled="true">
+        <input type="text" hidden="true" name="txtId" id="txtId" class="form-control" [(ngModel)]="doctor.DocCodigo">
       </div>
       <span class="row"></span>
       <div class="col-md-3">
         <label for="txtNombre" class="from-label">Nombre</label>
-        <input type="text" name="id" id="txtNombre" class="form-control" [(ngModel)]="doctor.DocNombre">
+        <input type="text" placeholder="Juan" name="txtNombre" id="txtNombre" class="form-control" [(ngModel)]="doctor.DocNombre" required="True">
       </div>
       <div class="col-md-3">
         <label for="txtApellido" class="from-label">Apellido</label>
-        <input type="text" name="id" id="txtApellido" class="form-control" [(ngModel)]="doctor.DocApellido">
+        <input type="text" placeholder="Perez" name="txtApellido" id="txtApellido" class="form-control" [(ngModel)]="doctor.DocApellido">
       </div>
       <span class="row"></span>
       <div class="col-md-6">
         <label for="txtEspecialidad" class="from-label">Especialidad</label>
-        <input type="text" name="id" id="txtEspecialidad" class="form-control" [(ngModel)]="doctor.DocEspecialidades">
+        <input type="text" placeholder="Oftalmologo" name="txtEspecialidad" id="txtEspecialidad" class="form-control" [(ngModel)]="doctor.DocEspecialidades">
       </div>
       <span class="row"></span>
       <div class="col-md-3">
-        <label for="txtTelefono" class="from-label">Telefono</label>
-        <input type="text" name="id" id="txtTelefono" class="form-control" [(ngModel)]="doctor.DocTelefono">
+        <label for="txtTelefono" class="from-label">Télefono</label>
+        <input type="text" placeholder="8098828565" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="10" name="txtTelefono" id="txtTelefono" class="form-control" [(ngModel)]="doctor.DocTelefono">
       </div>
       <div class="col-md-3">
         <label for="txtEmail" class="from-label">Email</label>
-        <input type="text" name="id" id="txtEmail" class="form-control" [(ngModel)]="doctor.DocEmail">
+        <input type="text" name="txtEmail" placeholder="example@example.com" id="txtEmail" class="form-control" [(ngModel)]="doctor.DocEmail">
       </div>
       <span class="row"></span>
       <div class="col-md-3">
         <label for="txtEntrada" class="from-label">Entrada</label>
-        <input type="time" name="id" id="txtEntrada" class="form-control" [(ngModel)]="doctor.DocHorarioInicial">
+        <input type="time" name="txtEntrada" id="txtEntrada" class="form-control" [(ngModel)]="doctor.DocHorarioInicial">
       </div>
       <div class="col-md-3">
         <label for="txtFinal" class="from-label">Salida</label>
-        <input type="time" name="id" id="txtFinal" class="form-control" [(ngModel)]="doctor.DocHorarioFinal">
+        <input type="time" name="txtFinal" id="txtFinal" class="form-control" [(ngModel)]="doctor.DocHorarioFinal">
       </div>
       <span class="row"></span>
       <div class="col-md-3">
         <label for="txtUsuario" class="from-label">Usuario</label>
-        <input type="text" name="id" id="txtUsuario" class="form-control" [(ngModel)]="usuario.UserNombre">
+        <input type="text" name="txtUsuario" placeholder="user" id="txtUsuario" class="form-control" [(ngModel)]="usuario.UserNombre">
       </div>
       <div class="col-md-3">
         <label for="txtPassword" class="from-label">Contraseña</label>
-        <input type="password" name="id" id="txtPassword" class="form-control" [(ngModel)]="usuario.UserPassword">
+        <input type="password" name="txtPassword" id="txtPassword" class="form-control" [(ngModel)]="usuario.UserPassword">
       </div>
     </div>
     <div class="row mt-4">
       <div class="col">
         <span class="row"></span>
-        <button class="btn btn-success" type="button" (click)="onAddDoctor(doctor)">Agregar</button>
+        <button class="btn btn-success" type="submit" (click)="onAddDoctor(doctor)">Agregar</button>
         <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
         <button class="btn btn-danger" type="button" (click)="volverDoctorLista()">Cancelar</button>
       </div>
     </div>
+  </form>
     <img class="doctoresimg" src="../../../assets/doctores-create.png">
   </div>

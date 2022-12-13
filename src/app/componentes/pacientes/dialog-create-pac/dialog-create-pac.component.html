@@ -34,7 +34,7 @@
       <span class="row"></span>
       <div class="col-md-3">
         <label for="txtTelefono" class="from-label">Telefono</label>
-        <input type="text" name="id" id="txtTelefono" class="form-control" [(ngModel)]="pacientes.PacTelefono">
+        <input type="text" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="10" name="id" id="txtTelefono" class="form-control" [(ngModel)]="pacientes.PacTelefono">
       </div>
       <div class="col-md-3">
         <label for="txtEmail" class="from-label">Email</label>

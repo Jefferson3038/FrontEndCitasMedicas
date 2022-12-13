@@ -6,6 +6,7 @@ import { UsuarioService } from 'src/app/Services/usuarios.service';
 import { ActualizarPacienteComponent } from './actualizar-paciente/actualizar-paciente.component';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { CitasService } from 'src/app/Services/citas.service';
 
 @Component({
   selector: 'app-pacientes',
@@ -16,8 +17,10 @@ export class PacientesComponent implements OnInit {
   paciente:Pacientes = new Pacientes();
   datatable:any = [];
   titulo:string;
+  validacionCitas:any=[];
   
-  constructor(private router:Router,private pacienteService:PacientesService, private userService:UsuarioService,private dialog?:MatDialog){
+  constructor(private router:Router,private pacienteService:PacientesService, 
+    private citasService:CitasService,private userService:UsuarioService,private dialog?:MatDialog){
   }
 
 
@@ -57,6 +60,9 @@ export class PacientesComponent implements OnInit {
       this.datatable=res;
       console.log(res);
     });
+    this.citasService.getCita("A").subscribe(res=>{
+      this.validacionCitas=res;
+    });
     this.titulo="Pacientes";
   }
 
@@ -67,25 +73,59 @@ export class PacientesComponent implements OnInit {
     });
     this.titulo="Pacientes eliminados";
   }
+  
+  onDelete(select:any){
+    if (this.validacionEliminar(select.pacCodigo)){
+      this.eliminar(select)
+    }
+    else if(this.validacionEliminar(select.pacCodigo)==false){
+      Swal.fire("Error","No se puede borrar este paciente, porque esta asignado a una cita","error")
+    }
+  }
 
-  onDelete(select:any):void{
-    this.userService.deleteUsuarios(select.userCodigo).subscribe(res=>{
-      if (res){
-        console.log(res)
+  eliminar(select:any):void{
+    Swal.fire({
+      title: "¿Esta seguro?",
+      text: "Este elemento sera eliminado",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, mantener'
+    }).then((result)=>{
+      if(result.value){
+        this.userService.deleteUsuarios(select.userCodigo).subscribe(res=>{
+          if (res){
+            console.log(res)
+          }
+          else{
+            alert('Error!')
+          }
+        });
+        this.pacienteService.deletePaciente(select.pacCodigo).subscribe(res => {
+          if(res){
+            Swal.fire("Eliminado",'Se ha eliminado el paciente '+this.paciente.PacNombre+' '+this.paciente.PacApellido+' de manera exitosa','success')
+            this.clear();
+            this.onDataTable();
+          } else {
+            alert('Error!')
+          }
+        });
       }
-      else{
-        alert('Error!')
+      return false
+    })
+  }
+
+  validacionEliminar(id:number){
+    let validacion:boolean=true;
+    let valor:number=0;
+    for(let item of this.validacionCitas){
+       valor = item.pacCodigo
+      if(valor==id){
+        validacion=false;
+        break;
       }
-    });
-    this.pacienteService.deletePaciente(select.pacCodigo).subscribe(res => {
-      if(res){
-        Swal.fire("Eliminado",'Se ha eliminado el paciente '+this.paciente.PacNombre+' '+this.paciente.PacApellido+' de manera exitosa','success')
-        this.clear();
-        this.onDataTable();
-      } else {
-        alert('Error!')
-      }
-    });
+    }
+    return validacion
   }
 
   onSetData(select:any){

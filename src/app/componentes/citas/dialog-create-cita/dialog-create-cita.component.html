@@ -1,1 +1,61 @@
-<p>dialog-create-cita works!</p>
+<div class="container">
+    <div class="row text-center mt-4">
+      <div class="col">
+      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <div class="col">
+        <h2>Crear citas</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <label for="txtId" hidden="true" class="from-label">ID</label>
+        <input type="text" hidden="true" name="id" id="txtId" class="form-control" [(ngModel)]="citas.CtCodigo" disabled="true">
+      </div>
+      <span class="row"></span>
+      <div class="col-md-3">
+        <label for="slcDoctores" class="from-label">Especialidad</label>
+        <select [(ngModel)]="especialidad" (click)="resetDoc()" name="id" id="Doctores" class="form-control">
+          <option *ngFor="let doc of listaDoctores" [value]="doc.docEspecialidades">{{doc.docEspecialidades}}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="slcDoctores" class="from-label">Doctores</label>
+        <select  [(ngModel)]="citas.DocCodigo" name="id" id="Doctores" class="form-control">
+          <option *ngFor="let doc of listaDoctores" [ngStyle]="{display: doc.docEspecialidades==especialidad ? 'block': 'none'}" [value]="doc.docCodigo">{{doc.docNombre}} {{doc.docApellido}}</option>
+        </select>
+      </div>
+      <span class="row"></span>
+      <div class="col-md-6">
+        <label for="txtDescripcion" class="from-label">Descripcion</label>
+        <input type="text" name="id" id="txtDescripcion" class="form-control" [(ngModel)]="citas.CtDescripcion">
+      </div>
+      <span class="row"></span>
+      <div class="col-md-3">
+        <label for="txtTelefono" class="from-label">Entrada</label>
+        <input type="datetime-local" name="id" id="txtTelefono" class="form-control" [(ngModel)]="citas.CtHorarioInicial">
+      </div>
+      <div class="col-md-3">
+        <label for="txtEmail" class="from-label">Salida</label>
+        <input type="datetime-local" name="id" id="txtEmail" class="form-control" [(ngModel)]="citas.CtHorarioFinal">
+      </div>
+      <span class="row"></span>
+      <div class="col-md-3">
+        <label for="slcPaciente" class="from-label">Paciente</label>
+        <select [(ngModel)]="citas.PacCodigo" name="id" id="Paciente" class="form-control">
+          <option *ngFor="let pac of listaPacientes" [value]="pac.pacCodigo">{{pac.pacNombre}}</option>
+        </select>
+      </div>
+      <span class="row"></span>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <span class="row"></span>
+        <button class="btn btn-success" type="button" (click)="onAddCita(citas)">Agregar</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+        <button class="btn btn-danger" type="button" (click)="volverCitasLista()">Cancelar</button>
+      </div>volverCitasLista
+    </div>
+    <img class="doctoresimg" src="../../../assets/doctores-create.png">
+  </div>

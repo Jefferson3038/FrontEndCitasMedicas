@@ -40,7 +40,7 @@
               <td [ngStyle]="{color: patient.pacEstatus=='D' ? 'red':'black'}">{{patient.pacCodigo}}</td>
               <td>{{patient.pacNombre}}</td>
               <td>{{patient.pacApellido}}</td>
-              <td>{{patient.pacFechaNacimiento}}</td>
+              <td>{{patient.pacFechaNacimiento | date: "MMM d, y"}}</td>
               <td>{{patient.pacTelefono}}</td>
               <td>{{patient.pacEmail}}</td>
               <td>{{patient.pacDireccion}}</td>

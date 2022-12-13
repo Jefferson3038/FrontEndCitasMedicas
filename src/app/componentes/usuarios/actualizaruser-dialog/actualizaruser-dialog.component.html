@@ -11,5 +11,5 @@
   <button class="btn btn-success" type="button"  (click)="onUpdate(usuario)">Actualizar</button>
   <button style="color:white;" class="btn btn-warning" type="button" (click)="onDelete(usuario)">Eliminar</button>
   <button class="btn btn-danger" type="button" (click)="cerrarDialog()">Cancelar</button>
-<ng-template #PacienteLabel><h5 class="col-md-6 float-md-end mb-2 ms-md-2" style="text-align: center;width: 50%; padding-right: 100px;padding-top: 0px;">Paciente</h5></ng-template>
+<ng-template #PacienteLabel><h5 class="tipo">Paciente</h5></ng-template>
 <h5 class="tipo" *ngIf="usuario.RlCodigo==1;else PacienteLabel">Doctor</h5>

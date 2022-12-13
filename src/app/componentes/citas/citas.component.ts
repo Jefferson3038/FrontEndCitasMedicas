@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import { DoctorService } from 'src/app/Services/doctor.service';
 import { PacientesService } from 'src/app/Services/pacientes.service';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-citas',
@@ -17,8 +19,7 @@ import { Router } from '@angular/router';
 export class CitasComponent implements OnInit {
   cita:Citas = new Citas();
   datatable:any = [];
-  titulo:string; 
-  
+  titulo:string;  
   
   constructor(private citaService:CitasService,private router:Router, 
   private doctorService:DoctorService, private pacienteService:PacientesService,private dialog?:MatDialog,
@@ -49,6 +50,7 @@ export class CitasComponent implements OnInit {
   onDataTable(){
     this.citaService.getCita("A").subscribe(res=>{
       this.datatable=res;
+      console.log(res)
     });
     this.titulo="Citas";
   }
@@ -61,15 +63,27 @@ export class CitasComponent implements OnInit {
   }
 
   onDeleteCita(select:any):void{
-    this.citaService.deleteCita(select.ctCodigo).subscribe(res => {
-      if(res){
-        Swal.fire("Eliminado",'Se elimino la cita de manera exitosa','success')
-        this.clear();
-        this.onDataTable();
-      } else {
-        alert('Error!')
+    Swal.fire({
+      title: "¿Esta seguro?",
+      text: "Este elemento sera eliminado",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, mantener'
+    }).then((result)=>{
+      if(result.value){
+        this.citaService.deleteCita(select.ctCodigo).subscribe(res => {
+          if(res){
+            Swal.fire("Eliminado",'Se elimino la cita de manera exitosa','success')
+            this.clear();
+            this.onDataTable();
+          } else {
+            alert('Error!')
+          }
+        });
       }
-    });
+      return false
+    })
   }
 
   onRestaurar(select:any):void{
@@ -85,12 +99,13 @@ export class CitasComponent implements OnInit {
   }
 
   onSetData(select:any){
-    this.cita.CtCodigo = select.CtCodigo;
-    this.cita.PacCodigo = select.PacCodigo;
-    this.cita.CtDescripcion = select.CtDescripcion;
+    this.cita.CtCodigo = select.ctCodigo;
+    this.cita.PacCodigo = select.pacCodigo;
+    this.cita.CtDescripcion = select.ctDescripcion;
     this.cita.DocCodigo = select.docCodigo;
-    this.cita.CtHorarioFinal = select.CtHorarioFinal;
-    this.cita.CtHorarioInicial = select.CtHorarioInicial;
+    this.cita.CtHorarioFinal = select.ctHorarioFinal;
+    this.cita.CtHorarioInicial = select.ctHorarioInicial;
+    console.log(this.cita)
     this.openDialog();
   }
 
@@ -105,27 +120,5 @@ export class CitasComponent implements OnInit {
 
   vistaAgregar(){
     this.router.navigate(["/Agregar-cita"]);
-  }
-
-  convertirFecha(select:any){
-    var k = new Date(select);
-    var valor = k.toLocaleTimeString();
- 
-    return valor;
-
-  }
-
-  obtenerDoctor(select:any){
-    var id = Number(select);
-    this.doctorService.getDoctorId(id).subscribe(res=>{
-        console.log(res);
-    }),[];   
-  }
-
-  obtenerPaciente(select:any){
-    var id = Number(select)
-    this.pacienteService.getPacienteId(id).subscribe(res=>{
-      console.log(res);
-    }),[];
   }
 }

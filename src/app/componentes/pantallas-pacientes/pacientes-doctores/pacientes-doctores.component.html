@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row text-center mt-4">
+    <div class="col">
+    </div>
+  </div>
+  <div class="row text-center mt-5">
+    <div class="col">
+      <h2>{{titulo}}</h2>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <button class="btn btn-success botones" type="button" (click)="vistaAgregar()">Agendar cita</button>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <table id="dtDocot" class="table" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Especialidad</th>
+            <th>Horario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doc of doctoresTabla">
+            <td>{{doc.docNombre}}</td>
+            <td>{{doc.docApellido}}</td>
+            <td>{{doc.docTelefono}}</td>
+            <td>{{doc.docEmail}}</td>
+            <td>{{doc.docEspecialidades}}
+            <td>{{doc.docHorarioInicial}} - {{doc.docHorarioFinal}}</td>   
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

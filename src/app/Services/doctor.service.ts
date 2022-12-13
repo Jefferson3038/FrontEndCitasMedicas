@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Doctor } from '../models/doctores';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +30,11 @@ export class DoctorService {
 
   deleteDoctor(id:number){
     return this.http.delete(this.url+`/${id}`);
+  }
+
+  validacionesDoctor(doctor:Doctor){
+    if(doctor.DocApellido==undefined || doctor.DocNombre==undefined){
+      Swal.fire("Error","Favor verificar los campos usuario y contraseña",'error')
+    }
   }
 }

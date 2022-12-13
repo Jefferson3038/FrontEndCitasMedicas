@@ -1,0 +1,92 @@
+.navegador {
+    z-index: 1;
+    display: block;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  .navegador > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navegador .logo{
+    margin-left: 0.4rem;
+  }
+ 
+  .navegador nav {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    justify-content: space-between;
+
+  }
+  .navegador nav ul {
+    padding-top: 1em;
+    display: flex;
+    list-style: none;
+  } 
+
+  .navegador nav ul a {
+    margin-right: 0.8rem;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: #2B316B;
+    border-radius: 15px;
+    max-height: 2.5rem;
+  }
+
+  .botonesMenu {
+    margin-right: 0.8rem;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: #2B316B;
+    border-radius: 15px;
+    max-height: 2.5rem;
+    width: 6.4rem;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+  }
+
+ .account{
+  margin-right: .3em;
+  ;
+ }
+
+ .info{
+  display: flex;
+  align-items: center;
+ }
+  
+ .menu-doctor li ul li a {
+  display: block;
+  padding: 0px 20px 20px 0px;
+  background-color: #2B316B;
+  display : flex;
+  align-items : center;
+  justify-content : center;
+  transition: all .15s;
+ }
+
+ .menu-doctor li ul li a:hover {
+  color: #80CFF5;
+  font-size: 110%;
+ }
+
+ .menu-doctor li ul{
+  z-index: 1;
+  background-color: #2B316B;
+  position: absolute;
+  display: none;
+  list-style: none;
+  width: 100px;
+  border-radius: 25%;
+  top: 3.8rem;
+  box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+} 
+
+ .menu-doctor li:hover >ul{
+  display: block;
+ }

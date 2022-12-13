@@ -32,7 +32,7 @@
           </thead>
           <tbody >
             <tr *ngFor="let user of datatable" [ngSwitch]="user.userEstatus">
-              <td>{{user.userCodigo}}</td>
+              <td [ngStyle]="{color: user.userEstatus=='D' ? 'red': 'black'}">{{user.userCodigo}}</td>
               <td>{{user.userNombre}}</td>
               <td *ngIf="user.rlCodigo==1">Doctor</td>
               <td *ngIf="user.rlCodigo==2">Paciente</td>
